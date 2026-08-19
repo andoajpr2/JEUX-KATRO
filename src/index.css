@@ -1,1 +1,347 @@
 @import "tailwindcss";
+
+/* ============================================================
+   KATRO — thème « bois sculpté malgache »
+   terre cuite · bois clair · ocre · vert palissandre
+   ============================================================ */
+
+:root {
+  --ebony: #1d120a;
+  --bark: #2a1a10;
+  --wood: #7c4a24;
+  --terra: #c96f45;
+  --terra-hi: #e2623b;
+  --ochre: #d9a441;
+  --cream: #f0ddba;
+  --leaf: #7d8f5e;
+  --leaf-dark: #4a5d43;
+  --tan: #c9ab7d;
+}
+
+html,
+body {
+  margin: 0;
+  background: var(--ebony);
+}
+
+body {
+  font-family: "Karla", "Segoe UI", sans-serif;
+  -webkit-font-smoothing: antialiased;
+}
+
+.font-display {
+  font-family: "Fraunces", Georgia, "Times New Roman", serif;
+}
+
+/* ---------- fond ambiant superposé ---------- */
+.app-bg {
+  min-height: 100vh;
+  color: var(--cream);
+  background:
+    radial-gradient(1100px 520px at 50% -10%, rgba(201, 111, 69, 0.16), transparent 62%),
+    radial-gradient(900px 620px at 104% 108%, rgba(74, 93, 67, 0.16), transparent 58%),
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='56' height='56' viewBox='0 0 56 56'%3E%3Cpath d='M28 4 52 28 28 52 4 28z' fill='none' stroke='%23d9a441' stroke-opacity='.055' stroke-width='1'/%3E%3C/svg%3E"),
+    repeating-linear-gradient(115deg, rgba(255, 235, 200, 0.014) 0 2px, transparent 2px 8px),
+    var(--ebony);
+}
+
+/* ---------- cartes « bois gravé » ---------- */
+.carved-card {
+  background:
+    linear-gradient(170deg, rgba(240, 221, 186, 0.055), rgba(240, 221, 186, 0.015)),
+    var(--bark);
+  border-radius: 16px;
+  box-shadow:
+    inset 0 0 0 1px rgba(217, 164, 65, 0.14),
+    0 12px 30px rgba(0, 0, 0, 0.35);
+}
+
+/* ---------- plateau ---------- */
+.plank-rim {
+  background: linear-gradient(180deg, #3d2513, #291810);
+  border-radius: 30px;
+  box-shadow:
+    inset 0 0 0 1px rgba(217, 164, 65, 0.14),
+    0 30px 70px rgba(0, 0, 0, 0.6);
+}
+
+.plank {
+  border-radius: 20px;
+  background:
+    repeating-linear-gradient(97deg, rgba(0, 0, 0, 0.09) 0 2px, transparent 2px 9px),
+    radial-gradient(120% 90% at 50% 0%, rgba(255, 224, 170, 0.1), transparent 55%),
+    linear-gradient(160deg, #8f5828 0%, #9a6130 34%, #7c4a24 68%, #663a1b 100%);
+  box-shadow:
+    inset 0 2px 0 rgba(255, 225, 170, 0.2),
+    inset 0 -4px 10px rgba(0, 0, 0, 0.42);
+}
+
+/* bande « lamba » : triangles tissés terre cuite / ocre */
+.lamba-strip {
+  height: 11px;
+  opacity: 0.6;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='28' height='11' viewBox='0 0 28 11'%3E%3Cpath d='M0 11 7 0l7 11z' fill='%23c96f45'/%3E%3Cpath d='M14 11 21 0l7 11z' fill='%23d9a441'/%3E%3C/svg%3E");
+  background-size: 28px 11px;
+}
+
+/* séparateur gravé entre les deux camps (losanges) */
+.carved-divider {
+  height: 10px;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='10' viewBox='0 0 24 10'%3E%3Cpath d='M12 0 22 5 12 10 2 5z' fill='none' stroke='%23d9a441' stroke-width='1.1' opacity='.5'/%3E%3C/svg%3E");
+  background-size: 24px 10px;
+}
+
+/* ---------- trous ---------- */
+.hole-pit {
+  position: absolute;
+  inset: 4%;
+  border-radius: 9999px;
+  background: radial-gradient(circle at 50% 36%, #5f3a1d 0%, #4a2b13 55%, #301a0a 100%);
+  box-shadow:
+    inset 0 7px 13px rgba(0, 0, 0, 0.66),
+    inset 0 -3px 6px rgba(255, 218, 158, 0.1),
+    0 1px 0 rgba(255, 220, 165, 0.16);
+  transition: transform 0.16s ease, box-shadow 0.16s ease;
+}
+
+.hole-dim {
+  opacity: 0.82;
+}
+
+.hole-btn:hover .hole-pit,
+.hole-btn:focus-visible .hole-pit {
+  transform: scale(1.055);
+  box-shadow:
+    inset 0 7px 13px rgba(0, 0, 0, 0.66),
+    inset 0 -3px 6px rgba(255, 218, 158, 0.1),
+    0 0 0 3px rgba(217, 164, 65, 0.6),
+    0 6px 18px rgba(217, 164, 65, 0.28);
+}
+
+/* ---------- aperçu du semis (survol) ---------- */
+.preview-origin {
+  outline: 2px solid rgba(240, 221, 186, 0.65);
+  outline-offset: 2px;
+}
+.preview-path {
+  outline: 2px dashed rgba(217, 164, 65, 0.55);
+  outline-offset: 2px;
+}
+.preview-land {
+  outline: 3px solid rgba(217, 164, 65, 0.95);
+  outline-offset: 2px;
+  box-shadow:
+    inset 0 7px 13px rgba(0, 0, 0, 0.66),
+    0 0 18px rgba(217, 164, 65, 0.4);
+}
+.preview-capture {
+  outline: 3px dashed rgba(226, 98, 59, 0.95);
+  outline-offset: 2px;
+  box-shadow:
+    inset 0 7px 13px rgba(0, 0, 0, 0.66),
+    0 0 16px rgba(226, 98, 59, 0.38);
+}
+
+/* marqueur du dernier trou joué par l'IA */
+.ai-marker {
+  position: absolute;
+  top: 1%;
+  right: 4%;
+  width: 11px;
+  height: 11px;
+  background: var(--ochre);
+  clip-path: polygon(50% 100%, 0 0, 100% 0);
+  filter: drop-shadow(0 1px 2px rgba(0, 0, 0, 0.6));
+  animation: markerIn 0.4s ease both;
+}
+@keyframes markerIn {
+  from { opacity: 0; transform: translateY(-5px); }
+  to { opacity: 1; transform: none; }
+}
+
+/* ---------- graines ---------- */
+.seed-dot {
+  position: absolute;
+  width: 13%;
+  height: 13%;
+  border-radius: 9999px;
+  transform: translate(-50%, -50%);
+  box-shadow:
+    inset -1px -2px 2px rgba(0, 0, 0, 0.42),
+    0 1px 2px rgba(0, 0, 0, 0.5);
+}
+
+.seed-badge {
+  background: rgba(22, 11, 4, 0.78);
+  color: var(--cream);
+  font-weight: 800;
+  font-size: 11px;
+  line-height: 1;
+  padding: 3px 6px;
+  border-radius: 999px;
+  box-shadow: 0 0 0 1px rgba(217, 164, 65, 0.45);
+}
+
+/* ---------- effets d'animation (steps) ---------- */
+.fx {
+  position: absolute;
+  inset: -3%;
+  border-radius: 9999px;
+  pointer-events: none;
+}
+.fx-sow {
+  border: 3px solid rgba(217, 164, 65, 0.95);
+  animation: seedPop 0.34s ease-out forwards;
+}
+.fx-capture {
+  border: 3px solid var(--terra-hi);
+  animation: captureFlash 0.55s ease-out forwards;
+}
+.fx-pickup {
+  border: 2px dashed rgba(240, 221, 186, 0.85);
+  animation: pickupFade 0.32s ease-out forwards;
+}
+.fx-end {
+  border: 2px solid rgba(240, 221, 186, 0.55);
+  animation: pickupFade 0.45s ease-out forwards;
+}
+
+@keyframes seedPop {
+  0% { transform: scale(0.5); opacity: 0; }
+  35% { opacity: 1; }
+  100% { transform: scale(1.14); opacity: 0; }
+}
+@keyframes captureFlash {
+  0% { transform: scale(0.5); opacity: 1; background: rgba(226, 98, 59, 0.5); }
+  100% { transform: scale(1.55); opacity: 0; background: rgba(226, 98, 59, 0); }
+}
+@keyframes pickupFade {
+  from { opacity: 0.95; transform: scale(0.92); }
+  to { opacity: 0; transform: scale(1.16); }
+}
+
+.hole-shake {
+  animation: holeShake 0.42s ease;
+}
+@keyframes holeShake {
+  0%, 100% { transform: translateX(0); }
+  20% { transform: translateX(-4px); }
+  40% { transform: translateX(4px); }
+  60% { transform: translateX(-3px); }
+  80% { transform: translateX(2px); }
+}
+
+/* entrée en scène des trous */
+.hole-in {
+  animation: holeIn 0.55s cubic-bezier(0.2, 0.7, 0.3, 1) both;
+}
+@keyframes holeIn {
+  from { opacity: 0; transform: translateY(12px) scale(0.82); }
+  to { opacity: 1; transform: none; }
+}
+
+/* ---------- micro-interactions ---------- */
+.bump {
+  display: inline-block;
+  animation: bump 0.35s ease-out;
+}
+@keyframes bump {
+  0% { transform: scale(1.5); }
+  100% { transform: scale(1); }
+}
+
+.pulse-dot {
+  animation: pulseSoft 1.15s ease-in-out infinite;
+}
+@keyframes pulseSoft {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50% { opacity: 0.4; transform: scale(0.72); }
+}
+
+.float-seed {
+  position: absolute;
+  border-radius: 9999px;
+  opacity: 0.13;
+  animation: floatSeed 7s ease-in-out infinite;
+  box-shadow: 0 0 14px rgba(217, 164, 65, 0.35);
+}
+@keyframes floatSeed {
+  0%, 100% { transform: translateY(0) rotate(0deg); }
+  50% { transform: translateY(-20px) rotate(10deg); }
+}
+
+.fade-in {
+  animation: fadeIn 0.3s ease both;
+}
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+.modal-in {
+  animation: modalIn 0.3s cubic-bezier(0.2, 0.7, 0.3, 1) both;
+}
+@keyframes modalIn {
+  from { opacity: 0; transform: translateY(16px) scale(0.955); }
+  to { opacity: 1; transform: none; }
+}
+
+/* ---------- boutons ---------- */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  font-size: 14px;
+  border: none;
+  border-radius: 12px;
+  padding: 0.68rem 1.1rem;
+  cursor: pointer;
+  transition: transform 0.15s ease, box-shadow 0.15s ease, filter 0.15s ease, background 0.15s ease;
+}
+.btn:active {
+  transform: translateY(1px) scale(0.98);
+}
+
+.btn-primary {
+  background: linear-gradient(180deg, #d97a4b, #bd5c33);
+  color: #fff3e2;
+  box-shadow:
+    0 8px 20px rgba(189, 92, 51, 0.35),
+    inset 0 1px 0 rgba(255, 255, 255, 0.28);
+}
+.btn-primary:hover {
+  filter: brightness(1.09);
+  transform: translateY(-1px);
+}
+
+.btn-ghost {
+  background: rgba(240, 221, 186, 0.06);
+  color: var(--cream);
+  box-shadow: inset 0 0 0 1px rgba(240, 221, 186, 0.2);
+}
+.btn-ghost:hover {
+  background: rgba(240, 221, 186, 0.13);
+  transform: translateY(-1px);
+}
+
+/* barre de défilement discrète (modal) */
+.carved-card::-webkit-scrollbar {
+  width: 8px;
+}
+.carved-card::-webkit-scrollbar-thumb {
+  background: rgba(217, 164, 65, 0.25);
+  border-radius: 8px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
